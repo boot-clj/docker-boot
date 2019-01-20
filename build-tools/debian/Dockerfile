@@ -1,5 +1,5 @@
 # base boot image
-FROM boot-clj/clojure:1.10.0-debian
+FROM bootclj/clojure:1.10.0-debian
 
 # install leiningen
 RUN wget -O /usr/local/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein

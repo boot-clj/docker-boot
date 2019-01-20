@@ -1,5 +1,5 @@
 # base openjdk image
-FROM boot-clj/openjdk:8-alpine
+FROM bootclj/openjdk:8-alpine
 
 # clojure version
 ARG CLOJURE_VERSION=1.10.0.411
