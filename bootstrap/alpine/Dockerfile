@@ -4,7 +4,7 @@ WORKDIR /usr/src/bootstrap
 
 RUN mkdir build bin src
 
-COPY *boot* ./
+COPY boot.properties build.boot ./
 
 ENV BOOT_AS_ROOT=yes
 
