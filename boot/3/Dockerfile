@@ -5,9 +5,9 @@ ARG VERSION=3.0.0-SNAPSHOT
 
 WORKDIR /usr/local/src
 
-RUN git clone https://github.com/boot-clj/boot.git
+RUN git clone https://github.com/boot-clj/boot.git boot-clj
 
-WORKDIR /usr/local/src/boot
+WORKDIR /usr/local/src/boot-clj
 
 # base
 WORKDIR /usr/local/src/boot-clj/boot/base
