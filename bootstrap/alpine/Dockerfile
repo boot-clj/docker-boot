@@ -1,8 +1,12 @@
 FROM bootclj/tooling AS build
 
-WORKDIR /usr/src/bootstrap
+WORKDIR /usr/local/src
 
-RUN mkdir build bin src
+RUN git clone https://github.com/boot-clj/bootstrap.git
+
+WORKDIR /usr/local/src/bootstrap
+
+RUN mkdir -p bin
 
 COPY boot.properties build.boot ./
 
@@ -10,13 +14,9 @@ ENV BOOT_AS_ROOT=yes
 
 RUN boot deps
 
-ADD https://github.com/boot-clj/bootstrap/archive/master.tar.gz /usr/local/src/bootstrap-master.tar.gz
-
-ADD /usr/local/src/bootstrap-master.tar.gz /usr/local/src/bootstrap
-
 RUN boot build
 
-RUN cat  src/head.sh target/loader.jar > bin/boot.sh
+RUN cat src/head.sh target/loader.jar > bin/boot.sh
 
 FROM bootclj/clojure:latest
 

@@ -10,4 +10,6 @@ RUN wget -O install-cljs.sh https://download.clojure.org/install/linux-install-$
 RUN chmod +x install-cljs.sh
 
 RUN ./install-cljs.sh
+
+RUN rm -rfv ./install-cljs.sh
 #
