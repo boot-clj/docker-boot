@@ -10,7 +10,9 @@ ENV BOOT_AS_ROOT=yes
 
 RUN boot deps
 
-COPY . .
+ADD https://github.com/boot-clj/bootstrap/archive/master.tar.gz /usr/local/src/bootstrap-master.tar.gz
+
+ADD /usr/local/src/bootstrap-master.tar.gz /usr/local/src/bootstrap
 
 RUN boot build
 
