@@ -6,6 +6,8 @@ RUN mkdir build bin src
 
 COPY *boot* ./
 
+ENV BOOT_AS_ROOT=yes
+
 RUN boot deps
 
 COPY . .
