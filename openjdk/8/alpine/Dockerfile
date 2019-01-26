@@ -2,5 +2,5 @@
 FROM openjdk:8-alpine
 
 # install extra build tools
-RUN apk add build-base bash curl maven
+RUN apk add build-base bash curl git maven
 #
