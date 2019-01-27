@@ -70,6 +70,8 @@ COPY --from=build /usr/local/src/boot-clj/bin/boot.uber.jar ~/.boot/cache/bin/${
 
 COPY --from=bootstrap /usr/local/bin/boot /usr/local/bin/boot
 
+RUN chmod +x /usr/local/bin/boot
+
 RUN boot -V
 
 ENTRYPOINT ["boot"]
