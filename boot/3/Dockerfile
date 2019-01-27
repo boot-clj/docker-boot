@@ -5,16 +5,16 @@ ARG VERSION=3.0.0-SNAPSHOT
 
 WORKDIR /usr/local/src
 
-RUN git clone https://github.com/boot-clj/boot.git
+RUN git clone https://github.com/boot-clj/boot.git boot-clj
 
 RUN git checkout ${VERSION}
 
-WORKDIR /usr/local/src/boot
+WORKDIR /usr/local/src/boot-clj
 
 # base
 WORKDIR /usr/local/src/boot-clj/boot/base
 
-RUN mvn -q install
+RUN lein install
 
 # pod
 WORKDIR /usr/local/src/boot-clj/boot/pod
@@ -28,7 +28,7 @@ RUN lein install
 
 RUN lein uberjar
 
-RUN cp target/aether-${VERSION}-standalone.jar /usr/local/src/boot-clj/boot/base/src/main/resources/aether.uber.jar
+RUN cp target/aether-${VERSION}-standalone.jar ../base/src/main/resources/aether.uber.jar
 
 # worker
 WORKDIR /usr/local/src/boot-clj/boot/worker
@@ -48,7 +48,7 @@ RUN lein install
 # base uber
 WORKDIR /usr/local/src/boot-clj/boot/base
 
-RUN mvn -q assembly:assembly -DdescriptorId=uberjar
+RUN lein uberjar
 
 # boot jar
 WORKDIR /usr/local/src/boot-clj/boot/boot
@@ -60,7 +60,7 @@ WORKDIR /usr/local/src/boot-clj
 
 RUN mkdir -p bin
 
-RUN cp boot/base/target/base-${VERSION}-uberjar.jar bin/boot.uber.jar
+RUN cp boot/base/target/base-${VERSION}-standalone.jar bin/boot.uber.jar
 
 FROM bootclj/bootstrap AS bootstrap
 
