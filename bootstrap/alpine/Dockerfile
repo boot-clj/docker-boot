@@ -8,8 +8,6 @@ WORKDIR /usr/local/src/bootstrap
 
 RUN mkdir -p bin
 
-COPY boot.properties build.boot ./
-
 ENV BOOT_AS_ROOT=yes
 
 RUN boot deps
