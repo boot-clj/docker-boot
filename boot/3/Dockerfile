@@ -7,9 +7,9 @@ WORKDIR /usr/local/src
 
 RUN git clone https://github.com/boot-clj/boot.git boot-clj
 
-RUN git checkout ${VERSION}
-
 WORKDIR /usr/local/src/boot-clj
+
+RUN git checkout ${VERSION}
 
 # base
 WORKDIR /usr/local/src/boot-clj/boot/base
