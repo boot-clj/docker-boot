@@ -12,6 +12,8 @@ WORKDIR /usr/local/src/boot-clj
 # base
 WORKDIR /usr/local/src/boot-clj/boot/base
 
+RUN cat pom.in.xml | sed 's/__VERSION__/${VERSION})/' > pom.xml
+
 RUN mvn -q install
 
 # pod
