@@ -7,6 +7,8 @@ WORKDIR /usr/local/src
 
 RUN git clone https://github.com/boot-clj/boot.git boot-clj
 
+RUN git checkout ${VERSION}
+
 WORKDIR /usr/local/src/boot-clj
 
 # base
@@ -28,7 +30,7 @@ RUN lein install
 
 RUN lein uberjar
 
-RUN cp target/aether-3.0.0-SNAPSHOT-standalone.jar /usr/local/src/boot-clj/boot/base/src/main/resources/aether.uber.jar
+RUN cp target/aether-${VERSION}-standalone.jar /usr/local/src/boot-clj/boot/base/src/main/resources/aether.uber.jar
 
 # worker
 WORKDIR /usr/local/src/boot-clj/boot/worker
@@ -60,13 +62,13 @@ WORKDIR /usr/local/src/boot-clj
 
 RUN mkdir -p bin
 
-RUN cp boot/base/target/base-3.0.0-SNAPSHOT-uberjar.jar bin/boot.uber.jar
+RUN cp boot/base/target/base-${VERSION}-uberjar.jar bin/boot.uber.jar
 
 FROM bootclj/bootstrap AS bootstrap
 
 FROM bootclj/clojure:latest
 
-COPY --from=build /usr/local/src/boot-clj/bin/boot.uber.jar ~/.boot/cache/bin/3.0.0-SNAPSHOT/boot.jar
+COPY --from=build /usr/local/src/boot-clj/bin/boot.uber.jar ~/.boot/cache/bin/${VERSION}/boot.jar
 
 COPY --from=bootstrap /usr/local/bin/boot /usr/local/bin/boot
 
