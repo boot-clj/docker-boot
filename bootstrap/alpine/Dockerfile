@@ -20,4 +20,6 @@ FROM bootclj/clojure:latest
 
 COPY --from=build /usr/local/src/bootstrap/bin/boot.sh /usr/local/bin/boot
 
+RUN chmod +x /usr/local/bin/boot
+
 ENTRYPOINT ["boot"]
