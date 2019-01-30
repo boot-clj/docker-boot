@@ -18,6 +18,8 @@ RUN cat src/head.sh target/loader.jar > bin/boot.sh
 
 FROM bootclj/clojure:latest
 
-COPY --from=build /usr/src/bootstrap/bin/boot.sh /usr/local/bin/boot
+COPY --from=build /usr/local/src/bootstrap/bin/boot.sh /usr/local/bin/boot
+
+RUN chmod +x /usr/local/bin/boot
 
 ENTRYPOINT ["boot"]
