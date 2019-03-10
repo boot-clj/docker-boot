@@ -1,5 +1,5 @@
 # base openjdk image
-FROM oracle/graalvm-ce:1.0.0-rc13
+FROM bootclj/graalvm:latest
 
 # clojure version
 ARG CLOJURE_VERSION=1.10.0.411
