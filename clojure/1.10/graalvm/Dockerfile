@@ -5,7 +5,7 @@ FROM bootclj/graalvm:latest
 ARG CLOJURE_VERSION=1.10.0.411
 
 # install clojure
-RUN curl https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh -o install-cljs.sh
+RUN curl -L https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh -o install-cljs.sh
 
 RUN chmod +x install-cljs.sh
 
