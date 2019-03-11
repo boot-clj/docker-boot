@@ -1,5 +1,5 @@
 # base boot image
-FROM bootclj/clojure:graalvm
+FROM bootclj/clojure:1.10.0-graalvm
 
 # install leiningen
 RUN curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein
